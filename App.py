@@ -73,6 +73,7 @@ def upload():
     
         print(app.config['UPLOAD_FOLDER'])
         outputfile = outDir +"/infile.nii.gz"
+        job_dir = inputDir
         test_csv_path = os.path.join(job_dir, 'test.csv')
         pd.DataFrame(data=[['im_0', inputFile]], columns=['id', 'image']).to_csv(test_csv_path, index=False)
         test_loader = get_test_loader(config, model, test_csv_path, use_cuda=not device.type == 'cpu')
