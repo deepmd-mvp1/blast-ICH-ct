@@ -5,3 +5,5 @@ SimpleITK==1.2.4
 torch
 torchvision
 tensorboard
+flask
+flas_cors
