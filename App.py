@@ -80,11 +80,11 @@ def upload():
         test_loader = get_test_loader(config, model, test_csv_path, use_cuda=not device.type == 'cpu')
         saver = NiftiPatchSaver(job_dir, test_loader, write_prob_maps=False)
         model_paths = [os.path.join(install_dir, f'blast_ct/data/saved_models/model_{i:d}.pt') for i in range(1, 13)]
-        ModelInferenceEnsemble(job_dir, device, model, saver, model_paths, task='segmentation')(None)
+        ModelInferenceEnsemble(job_dir, device, model, saver, model_paths, task='segmentation')(test_loader)
         output_dataframe = pd.read_csv(os.path.join(job_dir, 'predictions/prediction.csv'))
 
         shutil.copyfile(output_dataframe.loc[0, 'prediction'], outputfile)
-        shutil.rmtree(job_dir)
+        
         return send_file(outputfile, mimetype="application/zip, application/octet-stream, application/x-zip-compressed, multipart/x-zip")
         # return send_file("/home/output/infile.nii.gz", mimetype="application/zip, application/octet-stream, application/x-zip-compressed, multipart/x-zip")
 
