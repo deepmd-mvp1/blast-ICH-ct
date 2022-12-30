@@ -29,6 +29,7 @@ install_dir = os.path.dirname(os.path.realpath(__file__))
 with open(os.path.join(install_dir, 'blast_ct/data/config.json'), 'r') as f:
         config = json.load(f)
 model = get_model(config)
+device = set_device("0")
 app.secret_key = "secret key"
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 * 1024 * 1024
 
