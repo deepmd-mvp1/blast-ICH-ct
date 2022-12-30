@@ -6,4 +6,4 @@ torch
 torchvision
 tensorboard
 flask
-flas_cors
+flask_cors
