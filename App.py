@@ -57,9 +57,9 @@ def upload():
         
         print("inside ---")
         files = request.files.getlist('files[]')
-        inputDir = tempfile.mkdtemp(dir="/home/input")
+        inputDir = tempfile.mkdtemp(dir="input")
         os.environ['inputDir'] = inputDir
-        outDir = tempfile.mkdtemp(dir="/home/output")
+        outDir = tempfile.mkdtemp(dir="output")
         os.environ['outDir'] = outDir
         inputFile = ""
         for file in files:
