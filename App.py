@@ -72,6 +72,7 @@ def upload():
             
     
         print(app.config['UPLOAD_FOLDER'])
+        print("input file ::",inputFile)
         outputfile = outDir +"/infile.nii.gz"
         job_dir = inputDir
         test_csv_path = os.path.join(job_dir, 'test.csv')
