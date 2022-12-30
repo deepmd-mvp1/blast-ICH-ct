@@ -74,7 +74,8 @@ def upload():
         outputfile = outDir +"/infile.nii.gz"
         test_csv_path = os.path.join(job_dir, 'test.csv')
         pd.DataFrame(data=[['im_0', inputFile]], columns=['id', 'image']).to_csv(test_csv_path, index=False)
-        saver = NiftiPatchSaver(job_dir, None, write_prob_maps=False)
+        test_loader = get_test_loader(config, model, test_csv_path, use_cuda=not device.type == 'cpu')
+        saver = NiftiPatchSaver(job_dir, test_loader, write_prob_maps=False)
         model_paths = [os.path.join(install_dir, f'data/saved_models/model_{i:d}.pt') for i in range(1, 13)]
         ModelInferenceEnsemble(job_dir, device, model, saver, model_paths, task='segmentation')(None)
         output_dataframe = pd.read_csv(os.path.join(job_dir, 'predictions/prediction.csv'))
