@@ -26,7 +26,7 @@ device = "0"
 job_dir = '/tmp/blast_ct'
 os.makedirs(job_dir, exist_ok=True)
 install_dir = os.path.dirname(os.path.realpath(__file__))
-with open(os.path.join(install_dir, 'data/config.json'), 'r') as f:
+with open(os.path.join(install_dir, 'blast_ct/data/config.json'), 'r') as f:
         config = json.load(f)
 model = get_model(config)
 app.secret_key = "secret key"
